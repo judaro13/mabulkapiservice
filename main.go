@@ -2,6 +2,9 @@ package main
 
 import (
 	"errors"
+	"fmt"
+	"judaro13/miaguila/bulkapiservice/process"
+	"judaro13/miaguila/bulkapiservice/utils"
 	"log"
 	"os"
 
@@ -20,17 +23,26 @@ func main() {
 	}
 
 	ch, err := conn.Channel()
-	failOnError(err, "Failed to open a channel")
+	if err != nil {
+		panic(err)
+	}
 	defer ch.Close()
 
 	msgs, err := ch.Consume(
-		os.Getenv("RABBIT_QUERY_DATA_QUEUE"), "", true, // auto-ackc
+		os.Getenv("RABBIT_PROCESS_DATA_QUEUE"), "", true, // auto-ackc
 		false, false, false, nil)
 
 	forever := make(chan bool)
 	go func() {
 		for d := range msgs {
-			log.Printf("Received a message: %s", d.Body)
+			fmt.Print("\n processing message.....")
+			err := process.Data(conn, d.Body)
+			if err != nil {
+				utils.Error(err)
+				d.Ack(false)
+				fmt.Print("error\n")
+			}
+			fmt.Print("done\n")
 		}
 	}()
 
