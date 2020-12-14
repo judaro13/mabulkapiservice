@@ -5,12 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
-	"judaro13/miaguila/bulkapiservice/models"
-	"judaro13/miaguila/bulkapiservice/utils"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/judaro13/masharedmodels/models"
+	"github.com/judaro13/masharedmodels/utils"
 
 	"github.com/avast/retry-go"
 	"github.com/streadway/amqp"
@@ -90,7 +91,6 @@ func queryBulkData(rabbit *amqp.Connection, coords [][]string, reference string)
 }
 
 func sendDataToStore(rabbit *amqp.Connection, result models.UKAPIPOSTResult, reference string) error {
-
 	message := models.StoreDataMessage{Reference: reference, Result: result}
 	body, err := json.Marshal(message)
 	if err != nil {

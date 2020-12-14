@@ -4,9 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"judaro13/miaguila/bulkapiservice/process"
-	"judaro13/miaguila/bulkapiservice/utils"
 	"log"
 	"os"
+
+	"github.com/judaro13/masharedmodels/utils"
 
 	"github.com/streadway/amqp"
 )

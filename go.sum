@@ -1,4 +1,6 @@
 github.com/avast/retry-go v3.0.0+incompatible h1:4SOWQ7Qs+oroOTQOYnAHqelpCO0biHSxpiH9JdtuBj0=
 github.com/avast/retry-go v3.0.0+incompatible/go.mod h1:XtSnn+n/sHqQIpZ10K1qAevBhOOCWBLXXy3hyiqqBrY=
+github.com/judaro13/masharedmodels v0.1.0 h1:juPE5JKCLhtXpRFCP1Dttgf9D4AXD6b/PACt3JXVHsA=
+github.com/judaro13/masharedmodels v0.1.0/go.mod h1:wGSee30IQaMnL9X9dqnrZUHAXlLoDJSxOGTWj2O0+X0=
 github.com/streadway/amqp v1.0.0 h1:kuuDrUJFZL1QYL9hUNuCxNObNzB0bV/ZG5jV3RWAQgo=
 github.com/streadway/amqp v1.0.0/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
