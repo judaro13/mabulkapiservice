@@ -30,7 +30,7 @@ func main() {
 	defer ch.Close()
 
 	msgs, err := ch.Consume(
-		os.Getenv("RABBIT_PROCESS_DATA_QUEUE"), "", true, false, false, false, nil)
+		os.Getenv("RABBIT_QUERY_DATA_QUEUE"), "", true, false, false, false, nil)
 
 	forever := make(chan bool)
 	go func() {
