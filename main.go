@@ -30,8 +30,7 @@ func main() {
 	defer ch.Close()
 
 	msgs, err := ch.Consume(
-		os.Getenv("RABBIT_PROCESS_DATA_QUEUE"), "", true, // auto-ackc
-		false, false, false, nil)
+		os.Getenv("RABBIT_PROCESS_DATA_QUEUE"), "", true, false, false, false, nil)
 
 	forever := make(chan bool)
 	go func() {
@@ -55,7 +54,7 @@ func main() {
 func validateEnvVars() {
 	vars := []string{"RABBIT_URL", "RABBIT_QUERY_DATA_QUEUE", "RABBIT_STORE_DATA_QUEUE"}
 	for _, val := range vars {
-		if len(val) == 0 {
+		if len(os.Getenv(val)) == 0 {
 			panic(errors.New("not found " + val + " environment variable"))
 		}
 	}
